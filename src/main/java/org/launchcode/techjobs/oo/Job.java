@@ -90,4 +90,33 @@ public class Job {
     public int getId() {
         return id;
     }
+
+    // toString method to pass the first test
+    @Override
+    public String toString() {
+        String newline = System.lineSeparator();
+        if (name == null || name.isEmpty()) {
+            name = "Data not available";
+        }
+        if (employer == null) {
+            employer = new Employer("Data not available");
+        }
+        if (location == null) {
+            location = new Location("Data not available");
+        }
+        if (positionType == null) {
+            positionType = new PositionType("Data not available");
+        }
+        if (coreCompetency == null) {
+            coreCompetency = new CoreCompetency("Data not available");
+        }
+
+        return newline +
+                "ID: " + id + newline +
+                "Name: " + name + newline +
+                "Employer: " + employer + newline +
+                "Location: " + location + newline +
+                "Position Type: " + positionType + newline +
+                "Core Competency: " + coreCompetency + newline;
+    }
 }

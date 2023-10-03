@@ -2,7 +2,11 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
+
 
 public class JobTest {
 
@@ -50,5 +54,86 @@ public class JobTest {
 
         // Test that equals returns false
         assertFalse(job1.equals(job2));
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        // Create a Job object with some data
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        // Get the result of toString() method
+        String jobString = job.toString();
+
+        // Define the expected newline character
+        String newline = System.lineSeparator();
+
+        // Verify that the string starts and ends with a newline character
+        assertEquals(newline + "ID: " + job.getId() + newline +
+                "Name: Product tester" + newline +
+                "Employer: ACME" + newline +
+                "Location: Desert" + newline +
+                "Position Type: Quality control" + newline +
+                "Core Competency: Persistence" + newline, jobString);
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        // Create a Job object with some data
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        // Get the result of toString() method
+        String jobString = job.toString();
+
+        // Define the expected newline character
+        String newline = System.lineSeparator();
+
+        // Verify that the string contains correct labels and data for each field
+        assertEquals(newline +
+                "ID: " + job.getId() + newline +
+                "Name: Product tester" + newline +
+                "Employer: ACME" + newline +
+                "Location: Desert" + newline +
+                "Position Type: Quality control" + newline +
+                "Core Competency: Persistence" + newline, jobString);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyFields() {
+        // Create a Job object with empty fields
+        Job job = new Job("", null, null, null, null);
+
+        // Get the result of toString() method
+        String jobString = job.toString();
+
+        // Define the expected newline character
+        String newline = System.lineSeparator();
+
+        // Verify that the string contains "Data not available" for empty fields
+        assertEquals(newline +
+                "ID: " + job.getId() + newline +
+                "Name: Data not available" + newline +
+                "Employer: Data not available" + newline +
+                "Location: Data not available" + newline +
+                "Position Type: Data not available" + newline +
+                "Core Competency: Data not available" + newline, jobString);
+    }
+
+    @Test
+    public void testToStringHandlesOnlyIdField() {
+        // Create a Job object with only the id field set
+        Job job = new Job();
+
+        // Get the result of toString() method
+        String jobString = job.toString();
+
+        // Define the expected newline character
+        String newline = System.lineSeparator();
+
+        // Verify that the string contains the message for only the id field being set
+        assertEquals(newline +
+                "ID: " + job.getId() + newline +
+                "OOPS! This job does not seem to exist." + newline, jobString);
     }
 }
