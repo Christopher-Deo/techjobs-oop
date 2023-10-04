@@ -99,8 +99,9 @@ public class JobTest {
                 "Core Competency: Persistence" + newline, jobString);
     }
 
-    @Test
-    public void testToStringHandlesEmptyFields() {
+
+ @Test
+    public void testToStringHandlesEmptyField() {
         // Create a Job object with empty fields
         Job job = new Job("", null, null, null, null);
 
@@ -119,6 +120,7 @@ public class JobTest {
                 "Position Type: Data not available" + newline +
                 "Core Competency: Data not available" + newline, jobString);
     }
+
 
     @Test
     public void testToStringHandlesOnlyIdField() {

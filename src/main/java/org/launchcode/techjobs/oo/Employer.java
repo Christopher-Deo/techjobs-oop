@@ -4,9 +4,6 @@ package org.launchcode.techjobs.oo;
 
 public class Employer extends JobField {
 
-    public Employer() {
-        super(); // Calls the constructor of the superclass (JobField)
-    }
 
     public Employer(String value) {
         super(value); // Calls the constructor of the superclass (JobField) with the provided value

@@ -95,20 +95,33 @@ public class Job {
     @Override
     public String toString() {
         String newline = System.lineSeparator();
-        if (name == null || name.isEmpty()) {
+
+        // Check if all fields are empty except for the id field
+        if (name == null || name.isEmpty() &&
+                employer.getValue() == null || employer.getValue().isEmpty()  &&
+                location.getValue() == null || location.getValue().isEmpty()&&
+                positionType.getValue() == null || positionType.getValue().isEmpty()&&
+                coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+            return newline +
+                    "ID: " + id + newline +
+                    "OOPS! This job does not seem to exist." + newline;
+        }
+
+        // For other cases, return the regular representation
+        if (name.isEmpty()){
             name = "Data not available";
         }
-        if (employer == null) {
-            employer = new Employer("Data not available");
+        if (employer.getValue() == null || employer.getValue().isEmpty() ){
+            employer.setValue("Data not available");
         }
-        if (location == null) {
-            location = new Location("Data not available");
+        if (location.getValue()== null  || location.getValue().isEmpty()) {
+            location.setValue("Data not available");
         }
-        if (positionType == null) {
-            positionType = new PositionType("Data not available");
+        if (positionType.getValue() == null || positionType.getValue().isEmpty()) {
+            positionType.setValue("Data not available");
         }
-        if (coreCompetency == null) {
-            coreCompetency = new CoreCompetency("Data not available");
+        if (coreCompetency.getValue() == null  || coreCompetency.getValue().isEmpty()) {
+            coreCompetency.setValue("Data not available");
         }
 
         return newline +
@@ -119,4 +132,5 @@ public class Job {
                 "Position Type: " + positionType + newline +
                 "Core Competency: " + coreCompetency + newline;
     }
+
 }
