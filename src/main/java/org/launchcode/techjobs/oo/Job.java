@@ -96,34 +96,35 @@ public class Job {
     public String toString() {
         String newline = System.lineSeparator();
 
-        // Check if all fields are empty except for the id field
-        if (name == null || name.isEmpty() &&
-                employer.getValue() == null || employer.getValue().isEmpty()  &&
-                location.getValue() == null || location.getValue().isEmpty()&&
-                positionType.getValue() == null || positionType.getValue().isEmpty()&&
-                coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+        // Check if all fields are empty, including id
+        if (name == null || name.isEmpty()) {
+            name = "Data not available";
+        }
+        if (employer == null || employer.getValue() == null || employer.getValue().isEmpty()) {
+            employer = new Employer("Data not available");
+        }
+        if (location == null || location.getValue() == null || location.getValue().isEmpty()) {
+            location = new Location("Data not available");
+        }
+        if (positionType == null || positionType.getValue() == null || positionType.getValue().isEmpty()) {
+            positionType = new PositionType("Data not available");
+        }
+        if (coreCompetency == null || coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+            coreCompetency = new CoreCompetency("Data not available");
+        }
+
+        // Check if all fields are empty, including id
+        if (name.equals("Data not available") &&
+                employer.getValue().equals("Data not available") &&
+                location.getValue().equals("Data not available") &&
+                positionType.getValue().equals("Data not available") &&
+                coreCompetency.getValue().equals("Data not available")) {
             return newline +
                     "ID: " + id + newline +
                     "OOPS! This job does not seem to exist." + newline;
         }
 
         // For other cases, return the regular representation
-        if (name.isEmpty()){
-            name = "Data not available";
-        }
-        if (employer.getValue() == null || employer.getValue().isEmpty() ){
-            employer.setValue("Data not available");
-        }
-        if (location.getValue()== null  || location.getValue().isEmpty()) {
-            location.setValue("Data not available");
-        }
-        if (positionType.getValue() == null || positionType.getValue().isEmpty()) {
-            positionType.setValue("Data not available");
-        }
-        if (coreCompetency.getValue() == null  || coreCompetency.getValue().isEmpty()) {
-            coreCompetency.setValue("Data not available");
-        }
-
         return newline +
                 "ID: " + id + newline +
                 "Name: " + name + newline +
@@ -132,5 +133,6 @@ public class Job {
                 "Position Type: " + positionType + newline +
                 "Core Competency: " + coreCompetency + newline;
     }
+
 
 }
