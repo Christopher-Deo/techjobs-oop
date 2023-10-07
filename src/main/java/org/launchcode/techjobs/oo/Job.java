@@ -114,15 +114,15 @@ public class Job {
         }
 
         // Check if all fields are empty, including id
-        if (name.equals("Data not available") &&
-                employer.getValue().equals("Data not available") &&
-                location.getValue().equals("Data not available") &&
-                positionType.getValue().equals("Data not available") &&
-                coreCompetency.getValue().equals("Data not available")) {
-            return newline +
-                    "ID: " + id + newline +
-                    "OOPS! This job does not seem to exist." + newline;
-        }
+//        if (name.equals("Data not available") &&
+//                employer.getValue().equals("Data not available") &&
+//                location.getValue().equals("Data not available") &&
+//                positionType.getValue().equals("Data not available") &&
+//                coreCompetency.getValue().equals("Data not available")) {
+//            return newline +
+//                    "ID: " + id + newline +
+//                    "OOPS! This job does not seem to exist." + newline;
+//        }
 
         // For other cases, return the regular representation
         return newline +
